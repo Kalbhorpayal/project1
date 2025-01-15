@@ -21,9 +21,9 @@ pipeline {
                 docker tag defualt/project1-backend:latest 054037116328.dkr.ecr.us-east-1.amazonaws.com/defualt/project1-backend:latest
                 docker push 054037116328.dkr.ecr.us-east-1.amazonaws.com/defualt/project1-backend:latest
                 '''
+                }
+                }
             }
         }
-            }
-        }
-    }
-}
+    
+
