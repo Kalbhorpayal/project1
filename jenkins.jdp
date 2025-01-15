@@ -14,7 +14,6 @@ pipeline {
         stage('deploy'){
             steps {
                 sh '''
-                    echo $Payal@2401 | docker login -u $payalkalbhor2401 --password-stdin
                     docker build . -t Kalbhorpayal/project1:latest
                     docker push Kalbhorpayal/project1:latest
                     docker rmi Kalbhorpayal/project1:latest
