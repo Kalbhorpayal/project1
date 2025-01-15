@@ -12,7 +12,7 @@ pipeline {
                 sh 'mvn clean package'
             }
         }
-        stage( push') {
+        stage('push') {
             steps {
                 // docker image push to ecr 
                 sh '''
