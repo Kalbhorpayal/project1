@@ -4,6 +4,7 @@ pipeline {
         stage('pull'){
             steps {
                 git branch: 'main', url: 'https://github.com/Kalbhorpayal/project1.git'
+                K8S_NAMESPACE = 'default'
             }
         }
         stage('build'){
