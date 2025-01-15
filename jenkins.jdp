@@ -12,23 +12,17 @@ pipeline {
                 sh 'mvn clean package'
             }
         }
-         stage('Build') {
+        stage( push') {
             steps {
-                // Build the Docker image
-                sh 'docker build . -t payalkalbhor2401/project1-backend'
+                // docker image push to ecr 
+                sh '''
+                aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 054037116328.dkr.ecr.us-east-1.amazonaws.com
+                docker build -t defualt/project1-backend .
+                docker tag defualt/project1-backend:latest 054037116328.dkr.ecr.us-east-1.amazonaws.com/defualt/project1-backend:latest
+                docker push 054037116328.dkr.ecr.us-east-1.amazonaws.com/defualt/project1-backend:latest
+                '''
             }
         }
-        stage('Push to Docker Hub') {
-            steps {
-                script {
-                    // Use credentials stored in Jenkins to log in to Docker Hub
-                    withCredentials([usernamePassword(credentialsId: 'docker-hub-creds', passwordVariable: 'DOCKER_PASSWORD', usernameVariable: 'DOCKER_USERNAME')]) {
-                        // Log in to Docker Hub
-                        sh 'echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin'
-                        // Push the image to Docker Hub
-                        sh 'docker push payalkalbhor2401/project1-backend'
-                    }
-                }
             }
         }
     }
