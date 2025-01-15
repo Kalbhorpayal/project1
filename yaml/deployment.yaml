@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: b9-backend-app
-          image: mayurwagh/oncdec9pls-backend:latest
+          image: Kalbhorpayal/project1:latest
           ports:
             - containerPort: 8080 
 
