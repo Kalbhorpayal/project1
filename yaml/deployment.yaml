@@ -15,6 +15,6 @@ spec:
     spec:
       containers:
       - name: project1-backend
-        image: payalkalbhor2401/project1-backend:latest
+        image: defualt/project1-backend
         ports:
         - containerPort: 8080
