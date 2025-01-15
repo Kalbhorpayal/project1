@@ -11,18 +11,20 @@ pipeline {
                 sh 'mvn clean package'
             }
         }
-        stage('push') {
+         stage('build'){
             steps {
-                // docker image push to ecr 
-                sh '''
-                aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 054037116328.dkr.ecr.us-east-1.amazonaws.com
-                docker build -t defualt/project1-backend .
-                docker tag defualt/project1-backend:latest 054037116328.dkr.ecr.us-east-1.amazonaws.com/defualt/project1-backend:latest
-                docker push 054037116328.dkr.ecr.us-east-1.amazonaws.com/defualt/project1-backend:latest
-                '''
-                }
-                }
+                sh 'mvn clean package'
             }
         }
-    
-
+        stage('deploy'){
+            steps {
+                sh '''
+                    docker build . -t mayurwagh/oncdec9pls-backend:latest
+                    docker push mayurwagh/oncdec9pls-backend:latest
+                    docker rmi mayurwagh/oncdec9pls-backend:latest
+                    kubectl apply -f ./yaml/
+                '''
+            }
+        }
+    }
+}
