@@ -1,25 +1,19 @@
-apiVersion: apps/v1 
+apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: b9-backend-app
-  labels:
-    app: b9-backend-app
+  name: project1-backend
 spec:
+  replicas: 2
   selector:
     matchLabels:
-      app: b9-backend-app
-  replicas: 2 
+      app: project1-backend
   template:
     metadata:
       labels:
-        app: b9-backend-app
+        app: project1-backend
     spec:
       containers:
-        - name: b9-backend-app
-          image: payalkalbhor2401/project1-backend
-          ports:
-            - containerPort: 8080 
-
-
-
-      
+      - name: project1-backend
+        image: payalkalbhor2401/project1-backend:latest
+        ports:
+        - containerPort: 8080
