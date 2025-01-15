@@ -6,11 +6,6 @@ pipeline {
                 git branch: 'main', url: 'https://github.com/Kalbhorpayal/project1.git'
             }
         }
-        stage('build'){
-            steps {
-                sh 'mvn clean package'
-            }
-        }
          stage('build'){
             steps {
                 sh 'mvn clean package'
