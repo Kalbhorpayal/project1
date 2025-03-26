@@ -15,6 +15,6 @@ spec:
     spec:
       containers:
       - name: b9-backend-app
-        image: payalkalbhor2401/project1-backend
+        image: payalkalbhor2401/project1-backend2
         ports:
         - containerPort: 8080
