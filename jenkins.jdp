@@ -14,6 +14,7 @@ pipeline {
         stage('deploy'){
             steps {
                 sh '''
+                    sh 'export DOCKER_BUILDKIT=1'
                     docker build . -t payalkalbhor2401/project1-backend
                     docker push payalkalbhor2401/project1-backend
                     docker rmi payalkalbhor2401/project1-backend
